@@ -9,7 +9,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full flex justify-center py-4 bg-transparent">
+    <header className="w-full flex justify-center py-4 bg-[rgba(190,219,255,0.18)]">
       <div className="flex w-full max-w-[1252px] py-[17px] px-[25px] items-center rounded-full border border-[rgba(226,232,240,0.60)] bg-[rgba(255,255,255,0.25)] shadow-[0_10px_15px_-3px_rgba(15,23,43,0.05),0_4px_6px_-4px_rgba(15,23,43,0.05)] backdrop-blur-md justify-between">
 
         {/* Left Section */}
@@ -42,7 +42,7 @@ export default function Header() {
           <Link href="#" className="hover:nav-hover">Contact Us</Link>
         </nav>
 
-        {/* Right Side Buttons */}
+        {/* Right Side */}
         <div className="flex items-center gap-3">
           {/* Desktop Signup */}
           <button className="hidden lg:block px-5 py-2 rounded-full bg-gradient-to-b from-[#2563eb] to-[#1e3a8a] text-white text-sm font-medium shadow-[0_4px_10px_rgba(37,99,235,0.3)] hover:opacity-90 transition">
@@ -54,7 +54,7 @@ export default function Header() {
             Join
           </button>
 
-          {/* Mobile Menu Toggle moved here */}
+          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setOpen(true)}
             className="lg:hidden p-2 rounded-md hover:bg-white/40 transition"
@@ -66,7 +66,10 @@ export default function Header() {
 
       {/* Mobile Sidebar */}
       {open && (
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40" onClick={() => setOpen(false)}>
+        <div
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+          onClick={() => setOpen(false)}
+        >
           <div
             className="w-[260px] h-full bg-white shadow-xl p-6 flex flex-col gap-6 animate-slideIn"
             onClick={(e) => e.stopPropagation()}
@@ -85,7 +88,7 @@ export default function Header() {
               <Link href="#" className="mobile-link">Contact Us</Link>
             </nav>
 
-            <button className="mt-auto px-5 py-2 rounded-full bg-gradient-to-b from-[#2563eb] to-[#1e3a8a] text-white text-sm font-medium shadow-[0_4px_10px_rgrgba(37,99,235,0.3)]">
+            <button className="mt-auto px-5 py-2 rounded-full bg-gradient-to-b from-[#2563eb] to-[#1e3a8a] text-white text-sm font-medium shadow-[0_4px_10px_rgba(37,99,235,0.3)] hover:opacity-90 transition">
               Signup
             </button>
           </div>
