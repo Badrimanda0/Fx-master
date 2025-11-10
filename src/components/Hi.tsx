@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
+  // console.log("Footer component rendered");
   return (
     <footer className="w-full text-white mt-28 bg-gradient-to-t from-[#0F172B] to-[#1D293D] py-16 px-6">
       <div className="max-w-7xl mx-auto">
