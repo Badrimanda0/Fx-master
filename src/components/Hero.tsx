@@ -6,30 +6,33 @@ import countriesData from "world-countries";
 
 type Country = {
   name: string;
-  code: string;
-  flag: string;
+  code: string; // currency code like "USD"
+  flag: string; // flag image url (svg or png)
   currency: string;
 };
 
 export default function HeroSection() {
-  const [amount, setAmount] = useState("1000");
-  const [recipientAmount, setRecipientAmount] = useState("0.00");
-  const [fromCountry, setFromCountry] = useState("USD");
-  const [toCountry, setToCountry] = useState("INR");
-  const [fromDropdownOpen, setFromDropdownOpen] = useState(false);
-  const [toDropdownOpen, setToDropdownOpen] = useState(false);
+  const [amount, setAmount] = useState<string>("1000");
+  const [recipientAmount, setRecipientAmount] = useState<string>("0.00");
+  const [fromCountry, setFromCountry] = useState<string>("USD");
+  const [toCountry, setToCountry] = useState<string>("INR");
+  const [fromDropdownOpen, setFromDropdownOpen] = useState<boolean>(false);
+  const [toDropdownOpen, setToDropdownOpen] = useState<boolean>(false);
 
- const countries: Country[] = countriesData
-  .filter((c: any) => c.currencies && c.flags)
-  .map((c: any) => ({
-    name: c.name.common,
-    code: Object.keys(c.currencies)[0],
-    currency: Object.keys(c.currencies)[0],
-    flag: c.flags.svg || c.flags.png,
-  }));
+  // Build countries list from world-countries package
+  const countries: Country[] = countriesData
+    .filter((c: any) => c.currencies && c.flags && Object.keys(c.currencies).length > 0)
+    .map((c: any) => {
+      const currencyCode = Object.keys(c.currencies)[0];
+      return {
+        name: c.name?.common || c.name || currencyCode,
+        code: currencyCode,
+        currency: currencyCode,
+        flag: (c.flags && (c.flags.svg || c.flags.png)) || "",
+      } as Country;
+    });
 
-
-  // Dummy exchange rates
+  // Dummy exchange rates relative to 1 USD (these are example numbers)
   const [rates, setRates] = useState<Record<string, number>>({
     USD: 1,
     INR: 83.12,
@@ -51,19 +54,36 @@ export default function HeroSection() {
     ZAR: 18.2,
   });
 
-  // Calculate recipient amount
+  // Calculate recipient amount whenever amount/from/to/rates changes
   useEffect(() => {
-    const fromRate = rates[fromCountry] || 1;
-    const toRate = rates[toCountry] || 1;
-    const usdValue = parseFloat(amount || "0");
-    const converted = (usdValue * (toRate / fromRate)).toLocaleString("en-IN", {
+    const fromRate = rates[fromCountry] ?? 1;
+    const toRate = rates[toCountry] ?? 1;
+    const numericAmount = parseFloat(amount || "0") || 0;
+
+    // conversion: amount * (toRate / fromRate)
+    const convertedValue = numericAmount * (toRate / fromRate);
+
+    const formatted = convertedValue.toLocaleString("en-IN", {
       minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     });
-    setRecipientAmount(converted);
+
+    setRecipientAmount(formatted);
   }, [amount, fromCountry, toCountry, rates]);
 
+  // Safely compute exchange display (1 FROM = X TO)
+  const exchangeDisplay = (() => {
+    const fromRate = rates[fromCountry] ?? 1;
+    const toRate = rates[toCountry] ?? 1;
+    const ratio = fromRate === 0 ? 0 : toRate / fromRate;
+    return ratio.toFixed(2);
+  })();
+
   return (
-    <section className="w-full bg-transparent py-12 flex justify-center font-bricolage relative">
+    <section
+      className="w-full py-12 flex justify-center font-bricolage relative"
+      style={{ backgroundColor: "rgba(190,219,255,0.18)" }}
+    >
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1252px] px-4 sm:px-6 gap-8 sm:gap-12">
         {/* LEFT CONTENT */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/2">
@@ -72,7 +92,7 @@ export default function HeroSection() {
             <span className="font-medium text-[17px] text-[#45556C]">FX Master</span>
           </div>
 
-          <h1 className="text-[#0F172B] font-bold text-[40px] sm:text-[50px] lg:text-[64px] leading-[48px] sm:leading-[64px] lg:leading-[90px]">
+          <h1 className="text-[#0F172B] font-bold text-[30px] sm:text-[45px] lg:text-[58px] leading-[40px] sm:leading-[px] lg:leading-[90px]">
             <span className="block">Send Money</span>
             <span className="block bg-[linear-gradient(90deg,#155DFC_0%,#FF6900_50%,#009689_100%)] bg-clip-text text-transparent">
               Globally
@@ -127,6 +147,7 @@ export default function HeroSection() {
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 className="w-full bg-transparent outline-none text-[18px] sm:text-[20px] font-semibold text-[#111827]"
+                min="0"
               />
               <div
                 className="flex items-center gap-2 border-l pl-4 cursor-pointer relative"
@@ -139,6 +160,7 @@ export default function HeroSection() {
                   <img
                     src={countries.find((c) => c.code === fromCountry)?.flag || undefined}
                     className="w-5 h-5 rounded-sm"
+                    alt={`${fromCountry} flag`}
                   />
                 )}
                 <span className="text-[#111827] font-medium text-[15px]">{fromCountry}</span>
@@ -156,7 +178,9 @@ export default function HeroSection() {
                         setFromDropdownOpen(false);
                       }}
                     >
-                      {country.flag && <img src={country.flag} className="w-5 h-5 rounded-sm" />}
+                      {country.flag && (
+                        <img src={country.flag} className="w-5 h-5 rounded-sm" alt={`${country.name} flag`} />
+                      )}
                       <span className="text-[14px] text-[#111827]">
                         {country.name} ({country.code})
                       </span>
@@ -177,7 +201,7 @@ export default function HeroSection() {
                 setToCountry(temp);
               }}
             >
-              <img src="/icons/ud.svg" className="w-5 h-5 invert brightness-200" />
+              <img src="/icons/ud.svg" className="w-5 h-5 invert brightness-200" alt="swap" />
             </div>
           </div>
 
@@ -202,6 +226,7 @@ export default function HeroSection() {
                   <img
                     src={countries.find((c) => c.code === toCountry)?.flag || undefined}
                     className="w-5 h-5 rounded-sm"
+                    alt={`${toCountry} flag`}
                   />
                 )}
                 <span className="text-[#111827] font-medium text-[15px]">{toCountry}</span>
@@ -212,14 +237,16 @@ export default function HeroSection() {
                 <div className="absolute right-0 top-[65px] w-[250px] bg-white border border-gray-200 rounded-lg shadow-lg z-20 max-h-[240px] overflow-y-auto">
                   {countries.map((country) => (
                     <div
-                      key={`${country.code}-${country.name}`}
+                      key={`${country.code}-${country.name}-to`}
                       className="flex items-center gap-3 px-4 py-2 hover:bg-gray-50 cursor-pointer"
                       onClick={() => {
                         setToCountry(country.code);
                         setToDropdownOpen(false);
                       }}
                     >
-                      {country.flag && <img src={country.flag} className="w-5 h-5 rounded-sm" />}
+                      {country.flag && (
+                        <img src={country.flag} className="w-5 h-5 rounded-sm" alt={`${country.name} flag`} />
+                      )}
                       <span className="text-[14px] text-[#111827]">
                         {country.name} ({country.code})
                       </span>
@@ -235,7 +262,7 @@ export default function HeroSection() {
             <div className="text-[14px] text-[#6B7280]">
               Exchange Rate{" "}
               <span className="text-[#2563EB] font-medium ml-1">
-                1 {fromCountry} = {(rates[toCountry] || 0).toFixed(2)} {toCountry}
+                1 {fromCountry} = {exchangeDisplay} {toCountry}
               </span>
             </div>
             <div className="text-[14px] text-green-600 font-medium">₹0 - Transfer free!</div>
@@ -249,10 +276,10 @@ export default function HeroSection() {
           {/* Footer Info */}
           <div className="flex justify-center gap-6 sm:gap-10 mt-6 text-[12px] sm:text-[13px] text-[#6F7A88]">
             <div className="flex items-center gap-2">
-              <img src="/icons/tk.svg" className="w-4" /> <span>Secure transfer</span>
+              <img src="/icons/tk.svg" className="w-4" alt="secure" /> <span>Secure transfer</span>
             </div>
             <div className="flex items-center gap-2">
-              <img src="/icons/tk.svg" className="w-4" /> <span>Arrives in minutes</span>
+              <img src="/icons/tk.svg" className="w-4" alt="arrives" /> <span>Arrives in minutes</span>
             </div>
           </div>
         </div>
