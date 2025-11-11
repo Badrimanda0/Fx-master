@@ -10,8 +10,9 @@ export default function HowFXMasterWorks() {
 
         {/* SECTION TITLE */}
         <div className="flex flex-col items-center text-center gap-3">
-          <span className="px-4 py-1 rounded-full text-sm font-medium bg-white border border-gray-200 shadow">
-            🔄 Live Market Data
+          <span className="px-4 py-1 rounded-full text-sm font-medium bg-white border border-gray-200 shadow flex items-center gap-2">
+            <Image src="/images/icon.png" alt="Live Icon" width={16} height={16} />
+            Live Market Data
           </span>
 
           <h2 className="text-3xl sm:text-4xl font-bold text-[#0D1B2A]">
@@ -47,11 +48,12 @@ export default function HowFXMasterWorks() {
               className="object-cover rounded-[16px]"
             />
 
+            {/* Play Button moved to bottom-left corner */}
             <button
-              className="absolute bottom-6 left-6 w-[54px] h-[54px] flex justify-center items-center
+              className="absolute bottom-4 left-4 w-[54px] h-[54px] flex justify-center items-center
               rounded-full bg-white shadow-lg border border-gray-200 hover:scale-105 transition"
             >
-              <Image src="/icons/play.svg" alt="Play" width={24} height={24} />
+              <Image src="/images/wti.png" alt="Play" width={28} height={28} />
             </button>
           </div>
 

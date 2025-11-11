@@ -16,14 +16,14 @@ export default function Footer() {
           <div className="space-y-4 col-span-2">
             <div className="flex items-center gap-3">
               <div className="relative w-8 h-8">
-                <Image src="/images/fx.png" alt="FX Master" fill className="object-contain" />
+                <Image src="/images/Fx1.png" alt="FX Master" fill className="object-contain" />
               </div>
               <span className="text-xl font-semibold">FXMaster</span>
             </div>
 
             <p className="text-sm text-gray-300 leading-relaxed">
               The UK's fastest payroll payment solution. Streamline international payroll with
-              compliance, transparency, and dedicated support.
+              compliance, transparency,and dedicated support.
             </p>
 
             {/* Social Icons */}

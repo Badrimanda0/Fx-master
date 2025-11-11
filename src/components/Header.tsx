@@ -1,9 +1,9 @@
   "use client";
 
   import { Menu, X } from "lucide-react";
-  import Image from "next/image";
-  import Link from "next/link";
-  import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
   export default function Header() {
     const [open, setOpen] = useState(false);
@@ -16,7 +16,7 @@
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 relative">
               <Image
-                src="/images/fx.png"
+                src="/images/Fx1.png"
                 alt="FXMaster Logo"
                 fill
                 className="object-contain"
