@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import Hi from "@/components/Hi";
 import Mobile from "@/components/Mobile";
 import Questions from "@/components/Questions";
+import Security from "@/components/Security";
 import Works from "@/components/Works";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <Conversion />
       <Mobile />
       <Works />
+      <Security />
       <Choose />
       <Questions />
       <Contact />
