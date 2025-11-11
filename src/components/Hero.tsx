@@ -131,6 +131,11 @@ export default function HeroSection() {
 
         {/* RIGHT CARD */}
         <div className="w-full md:w-[480px] lg:w-[580px] bg-white rounded-[24px] shadow-[0_6px_30px_rgba(0,0,0,0.06)] p-9 sm:p-8 border border-[#EFF2F7] relative">
+          <img
+    src="/icons/tr.svg"
+    alt="top icon"
+    className="absolute -top-3 -right-4 w-12 h-12 cursor-pointer"
+  />
           <h2 className="text-[#0F172B] text-[22px] sm:text-[24px] font-semibold text-center">
             Quick Transfer
           </h2>
