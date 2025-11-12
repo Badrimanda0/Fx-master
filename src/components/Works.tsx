@@ -25,104 +25,80 @@ export default function HowFXMasterWorks() {
         </div>
 
         {/* MAIN CONTENT */}
-        <div className="relative flex flex-col lg:flex-row justify-between gap-12">
+        <div className="relative flex flex-col lg:flex-row justify-between items-center gap-12">
 
-          {/* LEFT IMAGE */}
-          <div
-            className="relative rounded-[16px] overflow-hidden shadow-xl"
-            style={{
-              width: "593px",
-              height: "568px",
-              padding: "32px",
-              position: "relative",
-              left: "-3px",
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "flex-start"
-            }}
-          >
-            <Image
-              src="/images/wt.png"
-              alt="How FX Works"
-              fill
-              className="object-cover rounded-[16px]"
-            />
-
-            {/* Play Button moved to bottom-left corner */}
-            <button
-              className="absolute bottom-4 left-4 w-[54px] h-[54px] flex justify-center items-center
-              rounded-full bg-white shadow-lg border border-gray-200 hover:scale-105 transition"
-            >
-              <Image src="/images/wti.png" alt="Play" width={28} height={28} />
-            </button>
+          {/* LEFT IMAGE AREA */}
+          <div className="relative flex justify-center items-center w-full lg:w-[593px] h-auto">
+            {/* Background Image */}
+            <div className="relative w-full h-[420px] sm:h-[480px] md:h-[520px] lg:h-[568px] rounded-[16px] overflow-hidden shadow-xl">
+              <Image
+                src="/images/wt.png"
+                alt="How FX Works"
+                fill
+                className="object-cover rounded-[16px]"
+                priority
+              />
+            </div>
           </div>
 
           {/* RIGHT SIDE STEPS */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 w-full lg:w-[612px]">
 
             {/* STEP 1 */}
-            <div className="flex flex-col gap-4 rounded-[16px] bg-white border border-gray-200 shadow-sm p-6 w-[612px] h-[141px]">
+            <div className="flex flex-col gap-4 rounded-[16px] bg-white border border-gray-200 shadow-sm p-6 w-full">
               <div className="flex items-center gap-5">
                 <div className="inline-flex w-[39px] h-[39px] justify-center items-center border border-[#C3BDBD66] bg-white/25 rounded-[29px] shadow">
                   <Image src="/icons/w1.svg" width={26} height={26} alt="Transfer" />
                 </div>
-
                 <h3 className="text-[#0C1B35] text-[20px] pl-[20px] font-bold leading-[30px]">
                   1. Enter Transfer Details
                 </h3>
               </div>
-
               <p className="text-gray-600 text-sm pl-[90px]">
                 Choose amount, currency & recipient location. See real exchange rates instantly with zero markup.
               </p>
             </div>
 
             {/* STEP 2 */}
-            <div className="flex flex-col gap-4 rounded-[16px] bg-white border border-gray-200 shadow-sm p-6 w-[612px] h-[141px]">
+            <div className="flex flex-col gap-4 rounded-[16px] bg-white border border-gray-200 shadow-sm p-6 w-full">
               <div className="flex items-center gap-5">
                 <div className="inline-flex w-[49px] h-[49px] justify-center items-center border border-[#C3BDBD66] bg-white/25 rounded-[29px] shadow">
                   <Image src="/icons/w2.svg" width={26} height={26} alt="Recipient" />
                 </div>
-
                 <h3 className="text-[#0C1B35] text-[20px] pl-[20px] font-bold leading-[30px]">
                   2. Add Recipient Information
                 </h3>
               </div>
-
               <p className="text-gray-600 text-sm pl-[90px]">
                 Securely save recipient details with full bank-level encryption.
               </p>
             </div>
 
             {/* STEP 3 */}
-            <div className="flex flex-col gap-4 rounded-[16px] bg-white border border-gray-200 shadow-sm p-6 w-[612px] h-[141px]">
+            <div className="flex flex-col gap-4 rounded-[16px] bg-white border border-gray-200 shadow-sm p-6 w-full">
               <div className="flex items-center gap-8">
                 <div className="inline-flex w-[49px] h-[49px] justify-center items-center border border-[#C3BDBD66] bg-white/25 rounded-[29px] shadow">
                   <Image src="/icons/w3.svg" width={26} height={26} alt="Track" />
                 </div>
-
                 <h3 className="text-[#0C1B35] text-[20px] pl-[10px] font-bold leading-[50px]">
                   3. Confirm & Track
                 </h3>
               </div>
-
               <p className="text-gray-600 text-sm pl-[90px]">
                 Track your transfer in real-time with status updates until delivered.
               </p>
             </div>
 
             {/* CTA BUTTONS */}
-            <div className="flex gap-4 mt-4">
-              <button className="px-6 py-3 bg-[#163577] text-white rounded-xl font-medium shadow hover:bg-[#0f45c4] transition flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+              <button className="px-6 py-3 bg-[#163577] text-white rounded-xl font-medium shadow hover:bg-[#0f45c4] transition flex items-center justify-center gap-2">
                 Start Transfer
                 <ArrowRight size={18} />
               </button>
-
               <button className="px-6 py-3 border border-gray-400 text-gray-700 rounded-xl hover:bg-gray-100 transition">
                 View Exchange Rates
               </button>
             </div>
-
           </div>
         </div>
       </div>

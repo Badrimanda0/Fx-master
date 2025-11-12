@@ -93,7 +93,6 @@ export default function HeroSection() {
   }, [amount, fromCountry, toCountry, rates]);
 
   const exchangeDisplay = (rates[toCountry] ?? 1) / (rates[fromCountry] ?? 1);
-
   const exchangeDisplayText =
     exchangeDisplay >= 0.01
       ? exchangeDisplay.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 })
@@ -101,18 +100,17 @@ export default function HeroSection() {
 
   return (
     <section
-      className="w-full py-12 flex justify-center font-bricolage relative"
-      style={{ backgroundColor: "rgba(190,219,255,0.18)" }}
+      className="w-full py-12 flex justify-center font-bricolage relative bg-[rgba(190,219,255,0.18)]"
     >
-      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1252px] px-4 sm:px-6 gap-8 sm:gap-12">
-        {/* LEFT CONTENT - unchanged */}
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1252px] px-4 sm:px-6 gap-10 sm:gap-12">
+        {/* LEFT CONTENT */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/2">
           <div className="flex items-center gap-2 mb-6">
             <img src="/icons/c1.svg" alt="logo" className="w-6 h-6" />
             <span className="font-medium text-[17px] text-[#45556C]">FX Master</span>
           </div>
 
-          <h1 className="text-[#0F172B] font-bold text-[30px] sm:text-[45px] lg:text-[58px] leading-[40px] lg:leading-[90px]">
+          <h1 className="text-[#0F172B] font-bold text-[30px] sm:text-[45px] lg:text-[58px] leading-[40px] lg:leading-[80px]">
             <span className="block">Send Money</span>
             <span className="block bg-[linear-gradient(90deg,#155DFC_0%,#FF6900_50%,#009689_100%)] bg-clip-text text-transparent">
               Globally
@@ -148,20 +146,18 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT CARD */}
-        <div className="w-full md:w-[560px] lg:w-[680px] bg-white rounded-[24px] shadow-[0_6px_30px_rgba(0,0,0,0.06)] p-8 sm:p-9 border border-[#EFF2F7] relative">
+        {/* RIGHT TRANSFER CARD */}
+        <div className="w-full md:w-[560px] lg:w-[680px] bg-white rounded-[24px] shadow-[0_6px_30px_rgba(0,0,0,0.06)] p-6 sm:p-8 border border-[#EFF2F7] relative">
           <img src="/icons/tr.svg" alt="top icon" className="absolute -top-3 -right-4 w-12 h-12 cursor-pointer" />
 
           <h2 className="text-[#0F172B] text-[22px] sm:text-[24px] font-semibold text-center">Quick Transfer</h2>
           <p className="text-[#6F7A88] text-[13px] sm:text-[14px] text-center mt-1">Best exchange rates guaranteed</p>
 
-          <div className="mt-6 space-y-5">
-            {/* YOU SEND: split into two boxes (left input, right dropdown box) */}
+          <div className="mt-6 space-y-6">
+            {/* YOU SEND */}
             <div>
               <label className="text-[14px] text-[#6B7280]">You send</label>
-
               <div className="mt-2 flex gap-3 items-stretch">
-                {/* left big input box */}
                 <div className="flex-1 bg-white rounded-[12px] border border-[#E5E7EB] px-4 py-3">
                   <input
                     type="number"
@@ -172,13 +168,20 @@ export default function HeroSection() {
                   />
                 </div>
 
-                {/* right small box with flag + code + chevron */}
-                <div className="min-w-[110px] max-w-[140px] bg-white rounded-[12px] border border-[#E5E7EB] px-3 py-2 flex items-center justify-center cursor-pointer relative"
-                     onClick={() => { setFromDropdownOpen(!fromDropdownOpen); setToDropdownOpen(false); }}>
-                  <img src={countries.find((c) => c.code === fromCountry)?.flag} className="w-6 h-6 rounded-sm object-cover" />
+                {/* FROM DROPDOWN */}
+                <div
+                  className="min-w-[110px] max-w-[140px] bg-white rounded-[12px] border border-[#E5E7EB] px-3 py-2 flex items-center justify-center cursor-pointer relative"
+                  onClick={() => {
+                    setFromDropdownOpen(!fromDropdownOpen);
+                    setToDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={countries.find((c) => c.code === fromCountry)?.flag}
+                    className="w-6 h-6 rounded-sm object-cover"
+                  />
                   <span className="ml-2 text-[15px] font-medium text-[#111827]">{fromCountry}</span>
                   <ChevronDown size={16} className="ml-2 text-gray-500" />
-                  {/* dropdown panel */}
                   {fromDropdownOpen && (
                     <div className="absolute right-0 top-full mt-2 w-[320px] bg-white border border-gray-200 rounded-lg shadow-lg z-40 max-h-[300px] overflow-y-auto">
                       {countries.map((country) => (
@@ -204,7 +207,7 @@ export default function HeroSection() {
             </div>
 
             {/* SWAP */}
-            <div className="flex justify-center -mt-2">
+            <div className="flex justify-center -mt-1">
               <div
                 title="Switch"
                 className="w-12 h-12 rounded-full bg-gradient-to-br from-[#2563EB] to-[#1E40AF] flex items-center justify-center shadow-md cursor-pointer"
@@ -218,12 +221,10 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* RECIPIENT GETS: same split layout */}
-           <div className="-mt-8">
+            {/* RECIPIENT GETS */}
+            <div>
               <label className="text-[14px] text-[#6B7280]">Recipient gets</label>
-
               <div className="mt-2 flex gap-3 items-stretch">
-                {/* left big readonly output */}
                 <div className="flex-1 bg-white rounded-[12px] border border-[#E5E7EB] px-4 py-3 flex items-center">
                   <input
                     type="text"
@@ -233,13 +234,20 @@ export default function HeroSection() {
                   />
                 </div>
 
-                {/* right small dropdown box */}
-                <div className="min-w-[110px] max-w-[140px] bg-white rounded-[12px] border border-[#E5E7EB] px-3 py-2 flex items-center justify-center cursor-pointer relative"
-                     onClick={() => { setToDropdownOpen(!toDropdownOpen); setFromDropdownOpen(false); }}>
-                  <img src={countries.find((c) => c.code === toCountry)?.flag} className="w-6 h-6 rounded-sm object-cover" />
+                {/* TO DROPDOWN */}
+                <div
+                  className="min-w-[110px] max-w-[140px] bg-white rounded-[12px] border border-[#E5E7EB] px-3 py-2 flex items-center justify-center cursor-pointer relative"
+                  onClick={() => {
+                    setToDropdownOpen(!toDropdownOpen);
+                    setFromDropdownOpen(false);
+                  }}
+                >
+                  <img
+                    src={countries.find((c) => c.code === toCountry)?.flag}
+                    className="w-6 h-6 rounded-sm object-cover"
+                  />
                   <span className="ml-2 text-[15px] font-medium text-[#111827]">{toCountry}</span>
                   <ChevronDown size={16} className="ml-2 text-gray-500" />
-                  {/* dropdown panel */}
                   {toDropdownOpen && (
                     <div className="absolute right-0 top-full mt-2 w-[320px] bg-white border border-gray-200 rounded-lg shadow-lg z-40 max-h-[300px] overflow-y-auto">
                       {countries.map((country) => (
@@ -264,30 +272,29 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Exchange Rate + Transfer Fee box — both inside a single rounded card like screenshot */}
-            <div className="mt-2 border border-[#E4F0FF] rounded-[14px] p-4 bg-gradient-to-r from-[rgba(241,250,255,1)] to-[rgba(243,252,250,1)]">
+            {/* EXCHANGE RATE BOX */}
+            <div className="mt-3 border border-[#E4F0FF] rounded-[14px] p-4 bg-gradient-to-r from-[rgba(241,250,255,1)] to-[rgba(243,252,250,1)] text-sm sm:text-base">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                {/* left column: labels */}
                 <div className="flex flex-col text-[14px] text-[#6B7280]">
-                  <div className="mb-2">Exchange Rate</div>
+                  <div className="mb-1 sm:mb-2">Exchange Rate</div>
                   <div>Transfer Fee</div>
                 </div>
-
-                {/* right column: values aligned right */}
                 <div className="ml-auto text-right">
-                  <div className="text-sm text-[#2563EB] font-medium">1 {fromCountry} = {exchangeDisplayText} {toCountry}</div>
+                  <div className="text-sm text-[#2563EB] font-medium">
+                    1 {fromCountry} = {exchangeDisplayText} {toCountry}
+                  </div>
                   <div className="text-[14px] text-green-600 font-medium mt-1">$0 - Transfer free!</div>
                 </div>
               </div>
             </div>
 
-            {/* CTA */}
+            {/* CTA BUTTON */}
             <button className="mt-2 w-full bg-gradient-to-b from-[#2563EB] to-[#1E40AF] text-white text-[15px] sm:text-[16px] font-medium py-4 rounded-full shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
               Start Transfer <ArrowRight size={18} />
             </button>
 
-            {/* small features */}
-            <div className="flex justify-center gap-9 sm:gap-12 mt-4 text-[12px] sm:text-[15px] text-[#555d68]">
+            {/* SMALL FEATURES */}
+            <div className="flex flex-wrap justify-center gap-8 sm:gap-12 mt-4 text-[12px] sm:text-[15px] text-[#555d68]">
               <div className="flex items-center gap-2">
                 <img src="/icons/tk.svg" className="w-4" alt="secure" /> <span>Secure transfer</span>
               </div>
