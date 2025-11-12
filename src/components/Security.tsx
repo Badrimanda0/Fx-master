@@ -29,7 +29,7 @@ export default function SecuritySection() {
           {/* Card 1 */}
           <div className="flex flex-col gap-4 bg-white rounded-2xl p-6 shadow-[0_12px_30px_rgba(15,23,43,0.06)] border border-[#EEF3F8]">
             <div className="inline-flex items-center justify-center w-[44px] h-[44px] rounded-lg bg-white shadow-sm border border-[#E6EEF6]">
-              <Image src="/icons/a1.svg" alt="Bank-level encryption" width={24} height={24} />
+              <Image src="/images/s1.png" alt="Bank-level encryption" width={24} height={24} />
             </div>
             <div>
               <h3 className="text-[#0D2338] font-semibold text-base">Bank-Level Encryption</h3>

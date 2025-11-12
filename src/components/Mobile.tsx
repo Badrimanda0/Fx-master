@@ -4,97 +4,139 @@ import Image from "next/image";
 
 export default function MobileAppSection() {
   return (
-    <section className="w-full flex justify-center bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa] py-20">
+    <section className="w-full flex justify-center bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa] py-8 sm:py-12">
       <div className="w-full max-w-[1200px] flex flex-col lg:flex-row items-center justify-between px-6 gap-10">
 
         {/* LEFT SIDE CONTENT */}
-        <div className="w-[736px] flex flex-col justify-center">
+        <div className="w-full lg:w-[736px] flex flex-col justify-center relative">
 
-          {/* Heading with Centered Icon */}
-          <div className="flex items-center mb-8 ml-4 gap-3">
-            <div className="flex justify-center items-center w-[49px] h-[49px] rounded-[29px] flex-shrink-0 border border-[rgba(255,255,255,0.40)] bg-[rgba(255,255,255,0.25)] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.10),0_8px_10px_-6px_rgba(0,0,0,0.10)]">
+          {/* HEADING + ICON */}
+          <div className="flex flex-col sm:flex-row sm:items-center mb-8 ml-2 sm:ml-4 gap-4 sm:gap-3 relative">
+
+            {/* ICON */}
+            <div
+              className="
+                flex justify-center items-center
+                w-[50px] h-[50px] sm:w-[49px] sm:h-[49px]
+                rounded-[29px]
+                border border-[rgba(255,255,255,0.40)]
+                bg-[rgba(255,255,255,0.25)]
+                shadow-[0_20px_25px_-5px_rgba(0,0,0,0.10),0_8px_10px_-6px_rgba(0,0,0,0.10)]
+                mx-auto sm:mx-0
+                sm:absolute sm:-left-[70px] sm:-top-1
+                z-50
+              "
+            >
               <Image
                 src="/icons/Vector.svg"
                 alt="Available Icon"
                 width={28}
                 height={28}
+                className="w-[26px] h-[26px] sm:w-[28px] sm:h-[28px] object-contain relative top-[5px]"
               />
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+
+            {/* TITLE */}
+            <h2 className="text-center sm:text-left text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mt-2 sm:mt-0">
               Available on iOS & Android
             </h2>
           </div>
 
-          {/* Description */}
-          <p className="text-gray-600 max-w-[540px] mb-10 ml-4">
+          {/* DESCRIPTION */}
+          <p className="text-gray-600 max-w-[540px] mb-10 ml-2 sm:ml-4 text-[15px] sm:text-base text-center sm:text-left">
             Take control of your mortgage with our powerful mobile app. Track
             payments, view statements, and get instant updates wherever you are.
           </p>
 
-          {/* Features */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12 ml-4">
-            <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-white shadow-sm border border-gray-100 w-[320px] h-[60px]">
-              <Image src="/images/m1.png" alt="Icon" width={54} height={54} className="relative top-[4px]" />
-              <p className="text-gray-800 font-medium text-base">Real-time notifications</p>
-            </div>
-
-            <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-white shadow-sm border border-gray-100 w-[320px] h-[60px]">
-              <Image src="/images/m2.png" alt="Icon" width={54} height={54} className="relative top-[4px]" />
-              <p className="text-gray-800 font-medium text-base">Easy payment management</p>
-            </div>
-
-            <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-white shadow-sm border border-gray-100 w-[320px] h-[60px]">
-              <Image src="/images/m3.png" alt="Icon" width={54} height={54} className="relative top-[4px]" />
-              <p className="text-gray-800 font-medium text-base">Secure authentication</p>
-            </div>
-
-            <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-white shadow-sm border border-gray-100 w-[320px] h-[60px]">
-              <Image src="/images/m4.png" alt="Icon" width={54} height={54} className="relative top-[4px]" />
-              <p className="text-gray-800 font-medium text-base">Track your equity</p>
-            </div>
+          {/* FEATURES */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 mb-12 ml-0 sm:ml-4">
+            {[
+              { img: "/images/m1.png", text: "Real-time notifications" },
+              { img: "/images/m2.png", text: "Easy payment management" },
+              { img: "/images/m3.png", text: "Secure authentication" },
+              { img: "/images/m4.png", text: "Track your equity" },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-3 px-4 py-3 sm:px-5 sm:py-4 rounded-xl bg-white shadow-sm border border-gray-100 w-full sm:w-[320px] h-[60px] mx-auto sm:mx-0"
+              >
+                <Image
+                  src={feature.img}
+                  alt="Feature Icon"
+                  width={48}
+                  height={48}
+                  className="relative top-[2px] sm:top-[4px] w-[44px] h-[44px] sm:w-[54px] sm:h-[54px]"
+                />
+                <p className="text-gray-800 font-medium text-[14.5px] sm:text-base">
+                  {feature.text}
+                </p>
+              </div>
+            ))}
           </div>
 
-          {/* Download Section */}
-          <div className="flex flex-col items-center text-center mt-12">
-            <p className="font-semibold text-gray-800 mb-4">Download The Free App from Our Store</p>
+          {/* DOWNLOAD SECTION */}
+          <div className="flex flex-col items-center text-center mt-8 sm:mt-12">
+            <p className="font-semibold text-gray-800 mb-4 text-[15px] sm:text-base">
+              Download The Free App from Our Store
+            </p>
 
-            {/* QR Code */}
-            <Image src="/images/qr1.png" alt="QR Code" width={140} height={140} className="rounded-lg mb-8" />
+            {/* QR CODE */}
+            <Image
+              src="/images/qr1.png"
+              alt="QR Code"
+              width={120}
+              height={120}
+              className="rounded-lg mb-6 sm:mb-8"
+            />
 
-            {/* Store Buttons */}
-            <div className="flex flex-row items-center justify-center gap-8 mb-6">
+            {/* STORE BUTTONS */}
+            <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-8 mb-6">
 
-              {/* Google Play */}
-              <div className="inline-flex px-[12px] py-[10px] items-center gap-[12px] rounded-[12px] border-[1.56px] border-[#0D2040]">
-                <Image src="/icons/Playstore.svg" alt="Playstore Icon" width={32.76} height={37.44} />
+              {/* GOOGLE PLAY */}
+              <div className="inline-flex px-[12px] py-[10px] items-center gap-[10px] sm:gap-[12px] rounded-[12px] border-[1.56px] border-[#0D2040]">
+                <Image
+                  src="/icons/Playstore.svg"
+                  alt="Playstore Icon"
+                  width={28}
+                  height={30}
+                  className="sm:w-[32.76px] sm:h-[37.44px]"
+                />
                 <div className="flex flex-col leading-tight text-left">
-                  <span className="text-[15.6px] font-extrabold uppercase text-[#060707]">GET IT ON</span>
-                  <span className="text-[16px] font-normal text-[#060707]">Google Play</span>
+                  <span className="text-[13px] sm:text-[15.6px] font-extrabold uppercase text-[#060707]">
+                    GET IT ON
+                  </span>
+                  <span className="text-[14px] sm:text-[16px] font-normal text-[#060707]">
+                    Google Play
+                  </span>
                 </div>
               </div>
 
-              {/* App Store */}
-              <div className="inline-flex px-[12px] py-[10px] items-center gap-[12px] rounded-[12px] border-[1.56px] border-[#0D2040]">
-                <Image src="/icons/Apple.svg" alt="Apple Icon" width={32.76} height={37.44} />
+              {/* APP STORE */}
+              <div className="inline-flex px-[12px] py-[10px] items-center gap-[10px] sm:gap-[12px] rounded-[12px] border-[1.56px] border-[#0D2040]">
+                <Image
+                  src="/icons/Apple.svg"
+                  alt="Apple Icon"
+                  width={28}
+                  height={30}
+                  className="sm:w-[32.76px] sm:h-[37.44px]"
+                />
                 <div className="flex flex-col leading-tight text-left">
-                  <span className="text-[11.6px] font-extrabold uppercase text-[#060707]">Download on the</span>
-                  <span className="text-[16px] font-extrabold text-[#060707]">App Store</span>
+                  <span className="text-[10px] sm:text-[11.6px] font-extrabold uppercase text-[#060707]">
+                    Download on the
+                  </span>
+                  <span className="text-[14px] sm:text-[16px] font-extrabold text-[#060707]">
+                    App Store
+                  </span>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
 
         {/* RIGHT SIDE PHONE IMAGE */}
         <div
-          className="relative flex items-center justify-center translate-x-6 -translate-y-6"
-          style={{
-            width: "460px",
-            height: "760px",
-            flexShrink: 0,
-            aspectRatio: "313 / 678",
-          }}
+          className="relative flex items-center justify-center w-[260px] sm:w-[380px] lg:w-[460px] aspect-[313/678]
+          -translate-y-8 sm:-translate-y-10 lg:-translate-y-12 lg:translate-x-6"
         >
           <Image
             src="/images/mb.png"
@@ -103,7 +145,6 @@ export default function MobileAppSection() {
             className="object-contain"
           />
         </div>
-
       </div>
     </section>
   );
