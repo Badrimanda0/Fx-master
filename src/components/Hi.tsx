@@ -95,7 +95,7 @@ export default function Footer() {
               <li><Link href="#">Help Center</Link></li>
               <li><Link href="#">Compliance Guide</Link></li>
               <li><Link href="#">Webinars</Link></li>
-              <li><Link href="#">Case Studies</Link></li>
+              <li><Link href="#">Cases Studies</Link></li>
             </ul>
           </div>
 
