@@ -1,6 +1,5 @@
 import Choose from "@/components/Choose";
 import Contact from "@/components/Contact";
-import Conversion from "@/components/Conversion";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Hi from "@/components/Hi";
@@ -14,7 +13,7 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <Conversion />
+      {/* <Conversion /> */}
       <Mobile />
       <Works />
       <Security />

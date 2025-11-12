@@ -1,13 +1,13 @@
 "use client";
 
-import { Github, Linkedin, Mail, Twitter } from "lucide-react"; // added icons
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   // console.log("Footer component rendered");
   return (
-    <footer className="w-full text-white mt-28 bg-gradient-to-t from-[#0F172B] to-[#1D293D] py-16 px-6">
+    <footer className="w-full text-white bg-gradient-to-t from-[#0F172B] to-[#1D293D] pt-14 pb-12 px-6 mt-0">
       <div className="max-w-7xl mx-auto">
 
         {/* Top Section */}
@@ -17,14 +17,19 @@ export default function Footer() {
           <div className="space-y-4 col-span-2">
             <div className="flex items-center gap-3">
               <div className="relative w-8 h-8">
-                <Image src="/images/Fx1.png" alt="FX Master" fill className="object-contain" />
+                <Image
+                  src="/images/Fx1.png"
+                  alt="FX Master"
+                  fill
+                  className="object-contain"
+                />
               </div>
               <span className="text-xl font-semibold">FXMaster</span>
             </div>
 
             <p className="text-sm text-gray-300 leading-relaxed">
-              The UK's fastest payroll payment solution. Streamline international payroll with
-              compliance, transparency,and dedicated support.
+              The UK's fastest payroll payment solution. Streamline international
+              payroll with compliance, transparency, and dedicated support.
             </p>
 
             {/* Social Icons */}
@@ -59,14 +64,6 @@ export default function Footer() {
               >
                 <Mail size={18} />
               </Link>
-
-              {/* <Link
-                href="https://fxmaster.com"
-                target="_blank"
-                className="border border-gray-600 p-2 rounded-full hover:border-white transition"
-              >
-                <Anchor size={18} />
-              </Link> */}
             </div>
           </div>
 
@@ -116,7 +113,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Line */}
-        <div className="border-t border-gray-700 mt-12 pt-6 flex flex-col sm:flex-row justify-between text-xs text-gray-400">
+        <div className="border-t border-gray-700 mt-10 pt-5 flex flex-col sm:flex-row justify-between text-xs text-gray-400">
           <p>© 2024 FX Master Payroll. All rights reserved. Regulated by the FCA.</p>
           <div className="flex gap-3 pt-2 sm:pt-0">
             <span>Made in the UK</span>
