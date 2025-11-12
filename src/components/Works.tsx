@@ -5,32 +5,29 @@ import Image from "next/image";
 
 export default function HowFXMasterWorks() {
   return (
-    <section className="w-full py-20 bg-[#F6F9FF] flex justify-center">
+    <section className="w-full py-20 bg-[#F6F9FF] flex justify-center relative">
       <div className="relative w-full max-w-[1200px] px-6 flex flex-col gap-14">
-
         {/* SECTION TITLE */}
         <div className="flex flex-col items-center text-center gap-3">
           <span className="px-4 py-1 rounded-full text-sm font-medium bg-white border border-gray-200 shadow flex items-center gap-2">
-            <Image src="/images/icon.png" alt="Live Icon" width={16} height={16} />
+            <Image src="/images/graph.png" alt="Live Icon" width={16} height={16} />
             Live Market Data
           </span>
 
           <h2 className="text-3xl sm:text-4xl font-bold text-[#0D1B2A]">
-            How FX Master Works
+            Fast Setup. Faster Payments.
           </h2>
 
           <p className="max-w-[640px] text-gray-600 text-sm sm:text-base">
-            Get the best exchange rates with zero markup. Our rates are updated every minute and always reflect the real mid-market value.
+            Helping you go from sign-up to first transfer in just a few clicks.
           </p>
         </div>
 
         {/* MAIN CONTENT */}
         <div className="relative flex flex-col lg:flex-row justify-between items-center gap-12">
-
           {/* LEFT IMAGE AREA */}
-          <div className="relative flex justify-center items-center w-full lg:w-[593px] h-auto">
-            {/* Background Image */}
-            <div className="relative w-full h-[420px] sm:h-[480px] md:h-[520px] lg:h-[568px] rounded-[16px] overflow-hidden shadow-xl">
+          <div className="relative flex justify-center items-center w-full lg:w-[580px]">
+            <div className="relative w-full h-[480px] sm:h-[570px] lg:h-[590px] rounded-[16px] overflow-hidden shadow-xl">
               <Image
                 src="/images/wt.png"
                 alt="How FX Works"
@@ -42,55 +39,69 @@ export default function HowFXMasterWorks() {
           </div>
 
           {/* RIGHT SIDE STEPS */}
-          <div className="flex flex-col gap-6 w-full lg:w-[612px]">
-
+          <div className="flex flex-col gap-4 w-full lg:w-[560px]">
             {/* STEP 1 */}
-            <div className="flex flex-col gap-4 rounded-[16px] bg-white border border-gray-200 shadow-sm p-6 w-full">
-              <div className="flex items-center gap-5">
-                <div className="inline-flex w-[39px] h-[39px] justify-center items-center border border-[#C3BDBD66] bg-white/25 rounded-[29px] shadow">
-                  <Image src="/icons/w1.svg" width={26} height={26} alt="Transfer" />
+            <div className="flex flex-col gap-2 rounded-[12px] bg-white border border-gray-200 shadow-sm p-5 w-full">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex w-[40px] h-[40px] justify-center items-center border border-[#C3BDBD66] bg-white/25 rounded-full shadow">
+                  <Image src="/icons/w1.svg" width={22} height={22} alt="Transfer" />
                 </div>
-                <h3 className="text-[#0C1B35] text-[20px] pl-[20px] font-bold leading-[30px]">
+                <h3 className="text-[#0C1B35] text-[18px] font-semibold">
                   1. Enter Transfer Details
                 </h3>
               </div>
-              <p className="text-gray-600 text-sm pl-[90px]">
-                Choose amount, currency & recipient location. See real exchange rates instantly with zero markup.
+              <p className="text-gray-600 text-sm pl-[64px]">
+                Choose amount, currency & recipient location. See real exchange rates instantly.
               </p>
             </div>
 
             {/* STEP 2 */}
-            <div className="flex flex-col gap-4 rounded-[16px] bg-white border border-gray-200 shadow-sm p-6 w-full">
-              <div className="flex items-center gap-5">
-                <div className="inline-flex w-[49px] h-[49px] justify-center items-center border border-[#C3BDBD66] bg-white/25 rounded-[29px] shadow">
-                  <Image src="/icons/w2.svg" width={26} height={26} alt="Recipient" />
+            <div className="flex flex-col gap-2 rounded-[12px] bg-white border border-gray-200 shadow-sm p-5 w-full">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex w-[40px] h-[40px] justify-center items-center border border-[#C3BDBD66] bg-white/25 rounded-full shadow">
+                  <Image src="/icons/w2.svg" width={22} height={22} alt="Recipient" />
                 </div>
-                <h3 className="text-[#0C1B35] text-[20px] pl-[20px] font-bold leading-[30px]">
+                <h3 className="text-[#0C1B35] text-[18px] font-semibold">
                   2. Add Recipient Information
                 </h3>
               </div>
-              <p className="text-gray-600 text-sm pl-[90px]">
+              <p className="text-gray-600 text-sm pl-[64px]">
                 Securely save recipient details with full bank-level encryption.
               </p>
             </div>
 
             {/* STEP 3 */}
-            <div className="flex flex-col gap-4 rounded-[16px] bg-white border border-gray-200 shadow-sm p-6 w-full">
-              <div className="flex items-center gap-8">
-                <div className="inline-flex w-[49px] h-[49px] justify-center items-center border border-[#C3BDBD66] bg-white/25 rounded-[29px] shadow">
-                  <Image src="/icons/w3.svg" width={26} height={26} alt="Track" />
+            <div className="flex flex-col gap-2 rounded-[12px] bg-white border border-gray-200 shadow-sm p-5 w-full">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex w-[40px] h-[40px] justify-center items-center border border-[#C3BDBD66] bg-white/25 rounded-full shadow">
+                  <Image src="/icons/w3.svg" width={22} height={22} alt="Track" />
                 </div>
-                <h3 className="text-[#0C1B35] text-[20px] pl-[10px] font-bold leading-[50px]">
+                <h3 className="text-[#0C1B35] text-[18px] font-semibold">
                   3. Confirm & Track
                 </h3>
               </div>
-              <p className="text-gray-600 text-sm pl-[90px]">
+              <p className="text-gray-600 text-sm pl-[64px]">
                 Track your transfer in real-time with status updates until delivered.
               </p>
             </div>
 
+            {/* STEP 4 */}
+            <div className="flex flex-col gap-2 rounded-[12px] bg-white border border-gray-200 shadow-sm p-5 w-full">
+              <div className="flex items-center gap-4">
+                <div className="inline-flex w-[40px] h-[40px] justify-center items-center border border-[#C3BDBD66] bg-white/25 rounded-full shadow">
+                  <Image src="/icons/w1.svg" width={22} height={22} alt="Completed" />
+                </div>
+                <h3 className="text-[#0C1B35] text-[18px] font-semibold">
+                  4. Transfer Completed
+                </h3>
+              </div>
+              <p className="text-gray-600 text-sm pl-[64px]">
+                Your funds reach the destination securely. Get instant confirmation of delivery.
+              </p>
+            </div>
+
             {/* CTA BUTTONS */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <button className="px-6 py-3 bg-[#163577] text-white rounded-xl font-medium shadow hover:bg-[#0f45c4] transition flex items-center justify-center gap-2">
                 Start Transfer
                 <ArrowRight size={18} />
@@ -101,6 +112,25 @@ export default function HowFXMasterWorks() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* LEFT BOTTOM FLOATING ICON */}
+      <div
+        className="absolute left-85 bottom-15 flex justify-center items-center"
+        style={{
+          width: "108.424px",
+          height: "105.61px",
+          transform: "rotate(1.903deg)",
+          padding: "14.921px 15.806px 13.796px 15.725px",
+          borderRadius: "68.165px",
+          border: "1.634px solid #fff",
+          background: "rgba(255, 255, 255, 0.5)",
+          boxShadow:
+            "0 32.677px 40.846px -8.169px rgba(0, 0, 0, 0.10), 0 13.071px 16.339px -9.803px rgba(0, 0, 0, 0.10)",
+          flexShrink: 0,
+        }}
+      >
+        <Image src="/images/Wti.png" alt="Floating Icon" className="w-full h-full object-contain" width={88} height={88} />
       </div>
     </section>
   );

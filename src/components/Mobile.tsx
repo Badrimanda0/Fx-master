@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function MobileAppSection() {
   return (
-    <section className="w-full flex justify-center bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa] py-8 sm:py-12">
+    <section className="w-full flex justify-center bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa] py-8 sm:py-1">
       <div className="w-full max-w-[1200px] flex flex-col lg:flex-row items-center justify-between px-6 gap-10">
 
         {/* LEFT SIDE CONTENT */}
@@ -43,9 +43,8 @@ export default function MobileAppSection() {
           </div>
 
           {/* DESCRIPTION */}
-          <p className="text-gray-600 max-w-[540px] mb-10 ml-2 sm:ml-4 text-[15px] sm:text-base text-center sm:text-left">
-            Take control of your mortgage with our powerful mobile app. Track
-            payments, view statements, and get instant updates wherever you are.
+          <p className="text-gray-600 max-w-[740px] mb-10 ml-2 sm:ml-4 text-[15px] sm:text-base text-center sm:text-left">
+            Take your global payments on the go with the FX Master app. Send, receive, and track your international transfers in real time, all from your phone. Manage your wallets, access live FX rates, and stay in control of your money 24/7. 
           </p>
 
           {/* FEATURES */}
