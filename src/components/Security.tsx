@@ -9,7 +9,7 @@ export default function SecuritySection() {
         {/* Badge + Heading */}
         <div className="flex flex-col items-center text-center gap-6 mb-14">
           <div className="inline-flex items-center justify-center w-[56px] h-[56px] rounded-full bg-white border border-gray-100 shadow-[0_8px_20px_rgba(12,27,53,0.06)]">
-            <Image src="/icons/S1.svg" alt="Security badge" width={28} height={28} />
+            <Image src="/icons/s1.svg" alt="Security badge" width={28} height={28} />
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0D2338]">
