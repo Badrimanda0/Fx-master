@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Streamline global payroll processing with blazing-fast payments, real-time compliance, and enterprise-grade security. Pay your international team in seconds, not days.",
   icons: {
-    icon: "/images/logo.png", // 👈 Make sure this file exists under /public/images/
+    icon: "/images/logo.png", // ✅ Your logo
   },
   openGraph: {
     title: "Payroll-Landing Page",
@@ -18,19 +18,20 @@ export const metadata: Metadata = {
     siteName: "Payroll Landing",
     images: [
       {
-        url: "/images/og.png",
-        width: 1200,
-        height: 630,
+        url: "/images/logo.png", // ✅ Use logo here
+        width: 512,
+        height: 512,
+        alt: "Payroll Landing Logo",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Landing Page",
+    title: "Payroll-Landing Page",
     description:
       "Streamline global payroll processing with blazing-fast payments, real-time compliance, and enterprise-grade security. Pay your international team in seconds, not days.",
-    images: ["/images/og.png"],
+    images: ["/images/logo.png"], // ✅ Use same logo
   },
 };
 
@@ -42,16 +43,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* ✅ Google Font: Bricolage Grotesque */}
+        {/* ✅ Google Font */}
         <link
           href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
           rel="stylesheet"
         />
 
-        {/* ✅ Favicon (PNG version, correct MIME type, cache-busting query to ensure update) */}
+        {/* ✅ Favicon */}
         <link rel="icon" href="/images/logo.png?v=2" type="image/png" />
 
-        {/* ✅ Optional: Add apple-touch-icon for better mobile display */}
+        {/* ✅ Apple Touch Icon */}
         <link rel="apple-touch-icon" href="/images/logo.png" />
       </head>
 
