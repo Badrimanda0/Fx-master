@@ -1,11 +1,11 @@
 "use client";
 
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaInstagram, FaFacebookF, FaYoutube, FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
-  // console.log("Footer component rendered");
   return (
     <footer className="w-full text-white bg-gradient-to-t from-[#0F172B] to-[#1D293D] pt-14 pb-12 px-6 mt-0">
       <div className="max-w-7xl mx-auto">
@@ -34,36 +34,52 @@ export default function Footer() {
 
             {/* Social Icons */}
             <div className="flex gap-4 pt-3">
+
+              {/* X (Twitter) */}
               <Link
-                href="https://twitter.com"
+                href="https://x.com/FX_Master_UK"
                 target="_blank"
                 className="border border-gray-600 p-2 rounded-full hover:border-white transition"
               >
-                <Twitter size={18} />
+                <FaXTwitter size={18} />
               </Link>
 
+              {/* YouTube */}
               <Link
-                href="https://github.com"
+                href="https://www.youtube.com/@FXMaster-uk"
                 target="_blank"
                 className="border border-gray-600 p-2 rounded-full hover:border-white transition"
               >
-                <Github size={18} />
+                <FaYoutube size={18} />
               </Link>
 
+              {/* LinkedIn */}
               <Link
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/fx-master-payments/"
                 target="_blank"
                 className="border border-gray-600 p-2 rounded-full hover:border-white transition"
               >
                 <Linkedin size={18} />
               </Link>
 
+              {/* Instagram */}
               <Link
-                href="mailto:support@fxmaster.com"
+                href="https://www.instagram.com/fxmasterpayments/"
+                target="_blank"
                 className="border border-gray-600 p-2 rounded-full hover:border-white transition"
               >
-                <Mail size={18} />
+                <FaInstagram size={18} />
               </Link>
+
+              {/* Facebook */}
+              <Link
+                href="https://www.facebook.com/fxmasterpayments"
+                target="_blank"
+                className="border border-gray-600 p-2 rounded-full hover:border-white transition"
+              >
+                <FaFacebookF size={18} />
+              </Link>
+
             </div>
           </div>
 
@@ -96,7 +112,7 @@ export default function Footer() {
               <li><Link href="#">Help Center</Link></li>
               <li><Link href="#">Compliance Guide</Link></li>
               <li><Link href="#">Webinars</Link></li>
-              <li><Link href="#">Cases Studies</Link></li>
+              <li><Link href="#">Case Studies</Link></li>
             </ul>
           </div>
 

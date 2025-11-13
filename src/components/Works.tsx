@@ -131,7 +131,7 @@ export default function HowFXMasterWorks() {
         }}
       >
         <Image
-          src="/images/Wti.png"
+          src="/images/hi.png"
           alt="Floating Icon"
           className="w-full h-full object-contain"
           width={88}
