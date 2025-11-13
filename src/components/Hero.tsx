@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ChevronDown, ShieldCheck, Clock } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type Country = {
@@ -28,8 +28,9 @@ export default function HeroSection() {
   const [sendingCountries, setSendingCountries] = useState<Country[]>([]);
   const [receivingCountries, setReceivingCountries] = useState<Country[]>([]);
   const [rates, setRates] = useState<Record<string, Rate>>({});
+  const [loadingRate, setLoadingRate] = useState<boolean>(false);
 
-  // Fetch API data
+  // Fetch initial API data
   useEffect(() => {
     async function fetchData() {
       try {
@@ -82,7 +83,93 @@ export default function HeroSection() {
     fetchData();
   }, []);
 
-  // Update recipient amount
+  // Fetch exchange rate when from/to changes
+  useEffect(() => {
+    async function fetchExchangeRateByIds() {
+      try {
+        if (
+          !fromCountry ||
+          !toCountry ||
+          sendingCountries.length === 0 ||
+          receivingCountries.length === 0
+        ) {
+          return;
+        }
+
+        const fromObj = sendingCountries.find((c) => c.code === fromCountry);
+        const toObj = receivingCountries.find((c) => c.code === toCountry);
+
+        if (!fromObj || !toObj) return;
+
+        if (fromObj.id === toObj.id) {
+          setRates((prev) => ({
+            ...prev,
+            [fromObj.code]: { currencyCode: fromObj.code, exchangeRate: 1, transferFee: 0 },
+            [toObj.code]: { currencyCode: toObj.code, exchangeRate: 1, transferFee: 0 },
+          }));
+          return;
+        }
+
+        setLoadingRate(true);
+
+        const res = await fetch(
+          `https://fxmaster-prod-apim.azure-api.net/fxmaster-api-prod-clone/API-FX-110-ExchangeRate?send_country_id=${fromObj.id}&receive_country_id=${toObj.id}`,
+          {
+            headers: { fx_key: "d9ca05910ac147cd99d2578c2bd62f5c" },
+          }
+        );
+
+        const json = await res.json();
+        const data = json.data;
+
+        if (data) {
+          const exchangeRateFromApi =
+            typeof data.exchangeRate === "number"
+              ? data.exchangeRate
+              : parseFloat(data.exchangeRate) || undefined;
+          const transferFeeFromApi =
+            typeof data.transferFee === "number"
+              ? data.transferFee
+              : parseFloat(data.transferFee) || 0;
+
+          setRates((prev) => {
+            const copy = { ...prev };
+            copy[fromObj.code] = {
+              currencyCode: fromObj.code,
+              exchangeRate: 1,
+              transferFee: copy[fromObj.code]?.transferFee ?? 0,
+            };
+
+            if (exchangeRateFromApi !== undefined) {
+              copy[toObj.code] = {
+                currencyCode: toObj.code,
+                exchangeRate: exchangeRateFromApi,
+                transferFee: transferFeeFromApi,
+              };
+            } else {
+              copy[toObj.code] = copy[toObj.code] ?? {
+                currencyCode: toObj.code,
+                exchangeRate: prev[toObj.code]?.exchangeRate ?? 1,
+                transferFee: prev[toObj.code]?.transferFee ?? 0,
+              };
+            }
+
+            return copy;
+          });
+        }
+      } catch (err) {
+        console.error("Error fetching exchange rate:", err);
+      } finally {
+        setLoadingRate(false);
+      }
+    }
+
+    if (sendingCountries.length && receivingCountries.length && fromCountry && toCountry) {
+      fetchExchangeRateByIds();
+    }
+  }, [fromCountry, toCountry, sendingCountries, receivingCountries]);
+
+  // Calculate recipient amount
   useEffect(() => {
     const fromRate = rates[fromCountry]?.exchangeRate ?? 1;
     const toRate = rates[toCountry]?.exchangeRate ?? 1;
@@ -115,8 +202,7 @@ export default function HeroSection() {
   return (
     <section className="w-full py-12 flex justify-center font-bricolage relative bg-[rgba(190,219,255,0.18)]">
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1252px] px-4 sm:px-6 gap-10 sm:gap-12">
-
-        {/* LEFT CONTENT */}
+        {/* LEFT SIDE */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/2">
           <div className="flex items-center gap-2 mb-6 p-[9px_17px] rounded-full border border-[rgba(255,255,255,0.40)] bg-[rgba(255,255,255,0.25)] shadow-[0_8px_32px_0_rgba(0,0,0,0.10)] cursor-pointer">
             <img src="/icons/c1.svg" alt="logo" className="w-6 h-6" />
@@ -125,23 +211,23 @@ export default function HeroSection() {
 
           <h1 className="text-[#0F172B] font-bold text-[30px] sm:text-[45px] lg:text-[58px] leading-[40px] lg:leading-[80px]">
             <span className="block">Simplify</span>
-           <span
-  className="block text-transparent bg-clip-text"
-  style={{
-    backgroundImage: "linear-gradient(90deg, #155DFC 0%, #FF6900 50%, #009689 100%)",
-  }}
->
-  Global
-</span>
-
-            <span className="block">payments with <br /> us.</span>
+            <span
+              className="block text-transparent bg-clip-text"
+              style={{
+                backgroundImage: "linear-gradient(90deg, #155DFC 0%, #FF6900 50%, #009689 100%)",
+              }}
+            >
+              Global
+            </span>
+            <span className="block">
+              payments with <br /> us.
+            </span>
           </h1>
 
           <p className="mt-6 text-[#45556C] text-[16px] sm:text-[18px] leading-[28px] sm:leading-[32px] max-w-[500px]">
             Send, receive, and manage global payments with real-time tracking and zero hidden fees.
           </p>
 
-          {/* ADDED BUTTONS */}
           <div className="flex flex-wrap gap-4 mt-10 justify-center md:justify-start">
             <button className="bg-gradient-to-b from-blue-600 to-blue-800 text-white font-medium px-6 py-3 rounded-[12px] shadow hover:opacity-90 transition flex items-center gap-2">
               Start Transfer <ArrowRight size={16} />
@@ -152,14 +238,17 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT CARD */}
+        {/* RIGHT SIDE CARD */}
         <div className="w-full md:w-[560px] lg:w-[680px] bg-white rounded-[24px] shadow-[0_6px_30px_rgba(0,0,0,0.06)] p-6 sm:p-8 border border-[#EFF2F7] relative">
-          <h2 className="text-[#0F172B] text-[22px] sm:text-[24px] font-semibold text-center">Quick Transfer</h2>
-          <p className="text-[#6F7A88] text-[13px] sm:text-[14px] text-center mt-1">Best exchange rates guaranteed</p>
+          <h2 className="text-[#0F172B] text-[22px] sm:text-[24px] font-semibold text-center">
+            Quick Transfer
+          </h2>
+          <p className="text-[#6F7A88] text-[13px] sm:text-[14px] text-center mt-1">
+            Best exchange rates guaranteed
+          </p>
 
+          {/* SEND INPUT */}
           <div className="mt-6 space-y-6">
-
-            {/* YOU SEND */}
             <div>
               <label className="text-[14px] text-[#6B7280]">You send</label>
               <div className="mt-2 flex gap-3 items-stretch">
@@ -181,7 +270,10 @@ export default function HeroSection() {
                     setToDropdownOpen(false);
                   }}
                 >
-                  <img src={getFlag(fromCountry, "from")} className="w-6 h-6 rounded-sm object-cover" />
+                  <img
+                    src={getFlag(fromCountry, "from")}
+                    className="w-6 h-6 rounded-sm object-cover"
+                  />
                   <span className="ml-2 text-[15px] font-medium text-[#111827]">{fromCountry}</span>
                   <ChevronDown size={16} className="ml-2 text-gray-500" />
                   {fromDropdownOpen && (
@@ -271,7 +363,7 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* EXCHANGE RATE */}
+            {/* RATE BOX */}
             <div className="mt-3 border border-[#E4F0FF] rounded-[14px] p-4 bg-gradient-to-r from-[rgba(241,250,255,1)] to-[rgba(243,252,250,1)] text-sm sm:text-base">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div className="flex flex-col text-[14px] text-[#6B7280]">
@@ -279,29 +371,38 @@ export default function HeroSection() {
                   <div>Transfer Fee</div>
                 </div>
                 <div className="ml-auto text-right">
-                  <div className="text-sm text-[#2563EB] font-medium">
-                    1 {fromCountry} = {exchangeRateText()} {toCountry}
+                  {loadingRate ? (
+                    <div className="text-sm text-[#2563EB] font-medium">
+                      Fetching latest rates...
+                    </div>
+                  ) : (
+                    <div className="text-sm text-[#2563EB] font-medium">
+                      1 {fromCountry} = {exchangeRateText()} {toCountry}
+                    </div>
+                  )}
+                  <div className="text-[14px] text-green-600 font-medium mt-1">
+                    {transferFeeText}
                   </div>
-                  <div className="text-[14px] text-green-600 font-medium mt-1">{transferFeeText}</div>
                 </div>
               </div>
             </div>
 
-            {/* CTA */}
+            {/* CTA BUTTON */}
             <button className="mt-2 w-full bg-gradient-to-b from-[#2563EB] to-[#1E40AF] text-white text-[15px] sm:text-[16px] font-medium py-4 rounded-[12px] shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">
               Start Transfer <ArrowRight size={18} />
             </button>
 
-            {/* SMALL FEATURES */}
+            {/* FEATURES */}
             <div className="flex flex-wrap justify-center gap-8 sm:gap-12 mt-4 text-[12px] sm:text-[15px] text-[#555d68]">
               <div className="flex items-center gap-2">
-                <img src="/icons/tk.svg" className="w-4" alt="secure" /> <span>Secure transfer</span>
+                <img src="/icons/tk.svg" className="w-4" alt="secure" />
+                <span>Secure transfer</span>
               </div>
               <div className="flex items-center gap-2">
-                <img src="/icons/tk.svg" className="w-4" alt="arrives" /> <span>Arrives in minutes</span>
+                <img src="/icons/tk.svg" className="w-4" alt="arrives" />
+                <span>Arrives in minutes</span>
               </div>
             </div>
-
           </div>
         </div>
       </div>

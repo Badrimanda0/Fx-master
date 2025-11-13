@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <div className="relative w-8 h-8">
                 <Image
-                  src="/images/Fx1.png"
+                  src="/images/logo.png"
                   alt="FX Master"
                   fill
                   className="object-contain"

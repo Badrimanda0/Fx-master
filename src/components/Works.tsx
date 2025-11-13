@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function HowFXMasterWorks() {
   return (
-    <section className="w-full pt-20 pb-5 bg-[#F6F9FF] flex justify-center relative">
+    <section className="w-full pt-20 pb-17 bg-[#F6F9FF] flex justify-center relative">
       <div className="relative w-full max-w-[1200px] px-6 flex flex-col gap-14">
         {/* SECTION TITLE */}
         <div className="flex flex-col items-center text-center gap-3">
@@ -116,7 +116,7 @@ export default function HowFXMasterWorks() {
 
       {/* LEFT BOTTOM FLOATING ICON */}
       <div
-        className="absolute left-35 bottom-[-15] flex justify-center items-center"
+        className="absolute left-35 bottom-[19px] flex justify-center items-center"
         style={{
           width: "108.424px",
           height: "105.61px",

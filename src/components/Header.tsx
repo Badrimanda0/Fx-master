@@ -16,7 +16,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3 cursor-pointer">
           <div className="w-11 h-11 relative">
             <Image
-              src="/images/FX1.png"
+              src="/images/logo.png"
               alt="FXMaster Logo"
               fill
               className="object-contain"
