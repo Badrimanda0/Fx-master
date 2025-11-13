@@ -14,7 +14,7 @@ export default function Header() {
 
         {/* LEFT SECTION */}
         <Link href="/" className="flex items-center gap-3 cursor-pointer">
-          <div className="w-9 h-9 relative">
+          <div className="w-11 h-11 relative">
             <Image
               src="/images/FX1.png"
               alt="FXMaster Logo"
@@ -22,13 +22,13 @@ export default function Header() {
               className="object-contain"
             />
           </div>
-          <span className="font-semibold text-[16px] sm:text-[16px] text-[#0f172b]">
+          <span className="font-semibold text-[19px] sm:text-[19px] text-[#0f172b]">
             FX Master
           </span>
         </Link>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden lg:flex items-center gap-12 text-[16px] font-medium text-[#45556c]">
+        <nav className="hidden lg:flex items-center gap-12 text-[17px] font-medium text-[#45556c]">
           {["Personal", "Business", "About Us", "Contact Us"].map((item, idx) => (
             <Link
               key={idx}
@@ -62,14 +62,14 @@ export default function Header() {
         </div>
       </div>
 
-      {/* MOBILE SIDEBAR */}
+      {/* MOBILE FULL BOX */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+          className="fixed inset-0 z-40 flex flex-col bg-black/30 backdrop-blur-sm"
           onClick={() => setOpen(false)}
         >
           <div
-            className="w-[260px] h-full bg-white shadow-xl p-6 flex flex-col gap-6 animate-slideIn"
+            className="w-full max-h-[90vh] bg-white shadow-xl p-6 flex flex-col gap-6 animate-slideIn"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between">

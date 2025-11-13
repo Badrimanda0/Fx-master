@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function FAQSection() {
@@ -45,38 +46,49 @@ export default function FAQSection() {
 
   return (
     <section className="flex justify-center items-center py-10 sm:py-14 bg-gradient-to-br from-[#f9fbff] to-[#f4f7fb]">
-      <div className="w-full max-w-[880px] px-4 sm:px-6 text-center">
-        {/* Title */}
+      <div className="w-full max-w-[780px] px-4 sm:px-6 text-center">
+        {/* SECTION TITLE */}
         <div className="flex flex-col items-center mb-8 sm:mb-10">
-          <div className="text-sm font-medium text-gray-500 mb-2">Got</div>
-          <h2 className="text-center font-sans font-bold text-[38px] sm:text-[58px] leading-[44px] sm:leading-[58px] bg-gradient-to-r from-[#155DFC] to-[#F54900] bg-clip-text text-transparent">
-            Questions?
+          {/* GOT LABEL WITH SVG */}
+          <div className="flex items-center gap-2 px-[17px] py-[9px] rounded-full border border-white/40 bg-white/25 shadow-[0_8px_32px_0_rgba(0,0,0,0.10)]">
+            <Image
+              src="/icons/got.svg" // ✅ replace with your SVG path
+              alt="Got Icon"
+              width={16}
+              height={16}
+              className="w-4 h-4 object-contain"
+            />
+            <div className="text-sm font-medium text-gray-500">Got</div>
+          </div>
+
+          {/* MAIN HEADING */}
+          <h2 className="text-center font-sans font-bold text-[32px] sm:text-[48px] leading-[40px] sm:leading-[54px] bg-gradient-to-r from-[#155DFC] to-[#F54900] bg-clip-text text-transparent mt-3">
+            Got Questions? We’ve Got You.
           </h2>
-          <p className="mt-3 sm:mt-4 text-[#45556C] text-center font-sans font-normal text-[15px] sm:text-[18px] leading-[26px] sm:leading-[32px]">
-            Find answers to common questions about FX Master Payroll Payments.
-            <br className="hidden sm:block" />
-            Can’t find what you’re looking for? Our support team is here to
-            help.
+
+          {/* DESCRIPTION */}
+          <p className="mt-3 sm:mt-6 text-[#45556C] text-center font-sans font-normal text-[15px] sm:text-[17px] leading-[24px] sm:leading-[28px] max-w-[600px]">
+            Here’s everything you need to know before you hit Send Money.
           </p>
         </div>
 
-        {/* FAQ List */}
-        <dl className="space-y-3 sm:space-y-4">
+        {/* FAQ LIST */}
+        <dl className="space-y-2 sm:space-y-3">
           {faqs.map((faq, index) => (
             <div
               key={faq.id}
-              className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden"
+              className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden transition-all duration-300"
             >
               <dt>
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left px-3 sm:px-5 py-3 sm:py-4 focus:outline-none"
+                  className="w-full flex justify-between items-center text-left px-3 sm:px-4 py-2.5 sm:py-3 focus:outline-none"
                   aria-expanded={openIndex === index ? "true" : "false"}
                 >
                   <div className="flex items-center gap-3 sm:gap-4">
-                    {/* Gradient Number Badge */}
+                    {/* GRADIENT NUMBER BADGE */}
                     <span
-                      className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 text-[14px] sm:text-[15px] font-semibold text-white rounded-full shrink-0"
+                      className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 text-[13px] sm:text-[14px] font-semibold text-white rounded-full shrink-0"
                       style={{
                         background:
                           "linear-gradient(150deg, #063FBB 10.35%, #E04401 98.94%)",
@@ -85,23 +97,21 @@ export default function FAQSection() {
                       {faq.id}
                     </span>
 
-                    {/* Question Text with your exact style */}
+                    {/* QUESTION TEXT */}
                     <span
-                      className="text-[18px] font-semibold sm:text-[18px]"
+                      className="text-[16px] sm:text-[17px] font-semibold"
                       style={{
                         color: "#0F172B",
                         fontFamily:
                           'var(--font-family-Font-1, "Bricolage Grotesque")',
-                        fontStyle: "normal",
-                        fontWeight: 600,
-                        lineHeight: "32px",
+                        lineHeight: "28px",
                       }}
                     >
                       {faq.question}
                     </span>
                   </div>
 
-                  {/* Dropdown Icon */}
+                  {/* CHEVRON ICON */}
                   <ChevronDown
                     className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${
                       openIndex === index ? "rotate-180" : ""
@@ -110,9 +120,9 @@ export default function FAQSection() {
                 </button>
               </dt>
 
-              {/* Answer Text */}
+              {/* ANSWER SECTION */}
               {openIndex === index && (
-                <dd className="px-10 sm:px-14 pb-3 sm:pb-4 text-gray-900 text-left text-[13.5px] sm:text-[15px] leading-6">
+                <dd className="px-8 sm:px-10 pb-3 sm:pb-4 text-gray-900 text-left text-[14.5px] sm:text-[15.5px] leading-6">
                   {faq.answer}
                 </dd>
               )}

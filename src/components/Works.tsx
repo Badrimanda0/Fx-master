@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function HowFXMasterWorks() {
   return (
-    <section className="w-full py-20 bg-[#F6F9FF] flex justify-center relative">
+    <section className="w-full pt-20 pb-5 bg-[#F6F9FF] flex justify-center relative">
       <div className="relative w-full max-w-[1200px] px-6 flex flex-col gap-14">
         {/* SECTION TITLE */}
         <div className="flex flex-col items-center text-center gap-3">
@@ -50,7 +50,7 @@ export default function HowFXMasterWorks() {
                   1. Enter Transfer Details
                 </h3>
               </div>
-              <p className="text-gray-600 text-sm pl-[64px]">
+              <p className="text-gray-700 text-sm pl-[64px]">
                 Choose amount, currency & recipient location. See real exchange rates instantly.
               </p>
             </div>
@@ -65,7 +65,7 @@ export default function HowFXMasterWorks() {
                   2. Add Recipient Information
                 </h3>
               </div>
-              <p className="text-gray-600 text-sm pl-[64px]">
+              <p className="text-gray-700 text-sm pl-[64px]">
                 Securely save recipient details with full bank-level encryption.
               </p>
             </div>
@@ -80,7 +80,7 @@ export default function HowFXMasterWorks() {
                   3. Confirm & Track
                 </h3>
               </div>
-              <p className="text-gray-600 text-sm pl-[64px]">
+              <p className="text-gray-700 text-sm pl-[64px]">
                 Track your transfer in real-time with status updates until delivered.
               </p>
             </div>
@@ -95,7 +95,7 @@ export default function HowFXMasterWorks() {
                   4. Transfer Completed
                 </h3>
               </div>
-              <p className="text-gray-600 text-sm pl-[64px]">
+              <p className="text-gray-700 text-sm pl-[64px]">
                 Your funds reach the destination securely. Get instant confirmation of delivery.
               </p>
             </div>
@@ -116,7 +116,7 @@ export default function HowFXMasterWorks() {
 
       {/* LEFT BOTTOM FLOATING ICON */}
       <div
-        className="absolute left-85 bottom-15 flex justify-center items-center"
+        className="absolute left-35 bottom-[-15] flex justify-center items-center"
         style={{
           width: "108.424px",
           height: "105.61px",
@@ -130,7 +130,13 @@ export default function HowFXMasterWorks() {
           flexShrink: 0,
         }}
       >
-        <Image src="/images/Wti.png" alt="Floating Icon" className="w-full h-full object-contain" width={88} height={88} />
+        <Image
+          src="/images/Wti.png"
+          alt="Floating Icon"
+          className="w-full h-full object-contain"
+          width={88}
+          height={88}
+        />
       </div>
     </section>
   );

@@ -4,14 +4,14 @@ import Image from "next/image";
 
 export default function MobileAppSection() {
   return (
-    <section className="w-full flex justify-center bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa] py-8 sm:py-1">
-      <div className="w-full max-w-[1200px] flex flex-col lg:flex-row items-center justify-between px-6 gap-10">
+    <section className="w-full flex justify-center bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa] py-9 sm:py-14">
+      <div className="w-full max-w-[1200px] flex flex-col lg:flex-row items-start lg:items-center justify-between px-6 gap-6 lg:gap-10">
 
         {/* LEFT SIDE CONTENT */}
-        <div className="w-full lg:w-[736px] flex flex-col justify-center relative">
+        <div className="w-full lg:w-[736px] flex flex-col justify-start relative">
 
           {/* HEADING + ICON */}
-          <div className="flex flex-col sm:flex-row sm:items-center mb-8 ml-2 sm:ml-4 gap-4 sm:gap-3 relative">
+          <div className="flex flex-col sm:flex-row sm:items-center mb-6 sm:mb-8 ml-0 sm:ml-4 gap-4 sm:gap-3 relative">
 
             {/* ICON */}
             <div
@@ -43,12 +43,12 @@ export default function MobileAppSection() {
           </div>
 
           {/* DESCRIPTION */}
-          <p className="text-gray-600 max-w-[740px] mb-10 ml-2 sm:ml-4 text-[15px] sm:text-base text-center sm:text-left">
-            Take your global payments on the go with the FX Master app. Send, receive, and track your international transfers in real time, all from your phone. Manage your wallets, access live FX rates, and stay in control of your money 24/7. 
+          <p className="text-gray-700 max-w-[740px] mb-18 sm:mb-10 ml-0 sm:ml-2 text-[17px] sm:text-[18px] text-center sm:text-left">
+            Take your global payments on the go with the FX Master app. Send, receive, and track your international transfers in real time, all from your phone. Manage your wallets, access live FX rates, and stay in control of your money 24/7.
           </p>
 
           {/* FEATURES */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 mb-12 ml-0 sm:ml-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-19 ml-0 sm:ml-4">
             {[
               { img: "/images/m1.png", text: "Real-time notifications" },
               { img: "/images/m2.png", text: "Easy payment management" },
@@ -74,7 +74,7 @@ export default function MobileAppSection() {
           </div>
 
           {/* DOWNLOAD SECTION */}
-          <div className="flex flex-col items-center text-center mt-8 sm:mt-12">
+          <div className="flex flex-col items-center text-center mt-6 sm:mt-8">
             <p className="font-semibold text-gray-800 mb-4 text-[15px] sm:text-base">
               Download The Free App from Our Store
             </p>
@@ -85,11 +85,11 @@ export default function MobileAppSection() {
               alt="QR Code"
               width={120}
               height={120}
-              className="rounded-lg mb-6 sm:mb-8"
+              className="rounded-lg mb-4 sm:mb-6"
             />
 
             {/* STORE BUTTONS */}
-            <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-8 mb-6">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-4 sm:mb-6">
 
               {/* GOOGLE PLAY */}
               <div className="inline-flex px-[12px] py-[10px] items-center gap-[10px] sm:gap-[12px] rounded-[12px] border-[1.56px] border-[#0D2040]">
@@ -134,8 +134,10 @@ export default function MobileAppSection() {
 
         {/* RIGHT SIDE PHONE IMAGE */}
         <div
-          className="relative flex items-center justify-center w-[260px] sm:w-[380px] lg:w-[460px] aspect-[313/678]
-          -translate-y-8 sm:-translate-y-10 lg:-translate-y-12 lg:translate-x-6"
+          className="relative flex items-center justify-center
+            w-[320px] sm:w-[420px] lg:w-[460px]  /* increased mobile width */
+            aspect-[260/550]  /* slightly taller */
+            -translate-y-10 sm:-translate-y-12 lg:-translate-y-12 lg:translate-x-6"
         >
           <Image
             src="/images/mb.png"
