@@ -4,7 +4,7 @@ import "./globals.css";
 
 // ✅ SEO, OpenGraph & Twitter Metadata
 export const metadata: Metadata = {
-  title: "Payroll-Landing Page",
+  title: "Fx-master-Landing-payroll",
   description:
     "Streamline global payroll processing with blazing-fast payments, real-time compliance, and enterprise-grade security. Pay your international team in seconds, not days.",
   icons: {

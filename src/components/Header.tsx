@@ -22,7 +22,7 @@ export default function Header() {
               className="object-contain"
             />
           </div>
-          <span className="font-semibold text-[19px] sm:text-[19px] text-[#0f172b]">
+          <span className="font-semibold text-[19px] sm:text-[25px] text-[#0f172b]">
             FX Master
           </span>
         </Link>
