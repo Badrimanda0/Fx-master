@@ -114,9 +114,10 @@ export default function HowFXMasterWorks() {
         </div>
       </div>
 
-      {/* LEFT BOTTOM FLOATING ICON */}
+      {/* DESKTOP/LAPTOP LEFT BOTTOM FLOATING ICON (md and up) */}
       <div
-        className="absolute left-35 bottom-[19px] flex justify-center items-center"
+        // hidden on small screens, visible on md+
+        className="hidden md:flex absolute left-35 bottom-[19px] flex justify-center items-center"
         style={{
           width: "108.424px",
           height: "105.61px",
@@ -136,6 +137,33 @@ export default function HowFXMasterWorks() {
           className="w-full h-full object-contain"
           width={88}
           height={88}
+        />
+      </div>
+
+      {/* MOBILE-ONLY FLOATING ICON (visible only on small screens) */}
+      <div
+        // visible on small screens, hidden on md+
+        className="flex md:hidden absolute left-[-7px] bottom-220 justify-center items-center z-40"
+        style={{
+          // scale down size for mobile so it doesn't overlap too much
+          width: "88px",
+          height: "84px",
+          transform: "rotate(1.903deg)",
+          padding: "10px",
+          borderRadius: "56px",
+          border: "1.2px solid #fff",
+          background: "rgba(255, 255, 255, 0.6)",
+          boxShadow:
+            "0 20px 26px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10)",
+          flexShrink: 0,
+        }}
+      >
+        <Image
+          src="/images/hi.png"
+          alt="Floating Icon Mobile"
+          className="w-full h-full object-contain"
+          width={72}
+          height={72}
         />
       </div>
     </section>

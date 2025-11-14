@@ -211,14 +211,12 @@ export default function HeroSection() {
 
           <h1 className="text-[#0F172B] font-bold text-[30px] sm:text-[45px] lg:text-[58px] leading-[40px] lg:leading-[80px]">
             <span className="block">Simplify</span>
-            <span
-              className="block text-transparent bg-clip-text"
-              style={{
-                backgroundImage: "linear-gradient(90deg, #155DFC 0%, #FF6900 50%, #009689 100%)",
-              }}
-            >
-              Global
-            </span>
+             <span className="bg-gradient-to-r from-blue-500 to-orange-500 bg-clip-text text-transparent">
+                Global
+              </span>
+
+
+
             <span className="block">
               payments with <br /> us.
             </span>
@@ -365,27 +363,35 @@ export default function HeroSection() {
 
             {/* RATE BOX */}
             <div className="mt-3 border border-[#E4F0FF] rounded-[14px] p-4 bg-gradient-to-r from-[rgba(241,250,255,1)] to-[rgba(243,252,250,1)] text-sm sm:text-base">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <div className="flex flex-col text-[14px] text-[#6B7280]">
-                  <div className="mb-1 sm:mb-2">Exchange Rate</div>
-                  <div>Transfer Fee</div>
-                </div>
-                <div className="ml-auto text-right">
-                  {loadingRate ? (
-                    <div className="text-sm text-[#2563EB] font-medium">
-                      Fetching latest rates...
-                    </div>
-                  ) : (
-                    <div className="text-sm text-[#2563EB] font-medium">
-                      1 {fromCountry} = {exchangeRateText()} {toCountry}
-                    </div>
-                  )}
-                  <div className="text-[14px] text-green-600 font-medium mt-1">
-                    {transferFeeText}
-                  </div>
-                </div>
-              </div>
-            </div>
+
+  <div className="flex items-center justify-between gap-3 min-w-0">
+
+    {/* LEFT SIDE */}
+    <div className="flex flex-col text-[14px] text-[#6B7280] flex-1 min-w-0">
+      <div className="mb-1 sm:mb-2">Exchange Rate</div>
+      <div>Transfer Fee</div>
+    </div>
+
+    {/* RIGHT SIDE */}
+    <div className="text-right flex-shrink-0">
+      {loadingRate ? (
+        <div className="text-sm text-[#2563EB] font-medium">
+          Fetching latest rates...
+        </div>
+      ) : (
+        <div className="text-sm text-[#2563EB] font-medium">
+          1 {fromCountry} = {exchangeRateText()} {toCountry}
+        </div>
+      )}
+
+      <div className="text-[14px] text-green-600 font-medium mt-1">
+        {transferFeeText}
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
             {/* CTA BUTTON */}
             <button className="mt-2 w-full bg-gradient-to-b from-[#2563EB] to-[#1E40AF] text-white text-[15px] sm:text-[16px] font-medium py-4 rounded-[12px] shadow-lg hover:opacity-95 transition flex items-center justify-center gap-2">

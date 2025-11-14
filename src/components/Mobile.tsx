@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function MobileAppSection() {
   return (
-    <section className="w-full flex justify-center bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa] py-9 sm:py-14">
+    <section className="w-full flex justify-center bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa] py-3 sm:py-12">
       <div className="w-full max-w-[1200px] flex flex-col lg:flex-row items-start lg:items-center justify-between px-6 gap-6 lg:gap-10">
 
         {/* LEFT SIDE CONTENT */}
@@ -76,7 +76,7 @@ export default function MobileAppSection() {
           {/* DOWNLOAD SECTION */}
           <div className="flex flex-col items-center text-center mt-6 sm:mt-8">
             <p className="font-semibold text-gray-800 mb-4 text-[15px] sm:text-base">
-              Download The Free App from Our Store
+             Download the FX Master App, your Global Wallet Starts Here. 
             </p>
 
             {/* QR CODE */}
