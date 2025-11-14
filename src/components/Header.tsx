@@ -9,7 +9,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full flex justify-center py-4 bg-[rgba(190,219,255,0.18)]">
+    <header className="w-full flex justify-center py-4 bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa]">
       <div className="flex w-full max-w-[1252px] py-[17px] px-[25px] items-center rounded-full border border-[rgba(226,232,240,0.60)] bg-[rgba(255,255,255,0.25)] shadow-[0_10px_15px_-3px_rgba(15,23,43,0.05),0_4px_6px_-4px_rgba(15,23,43,0.05)] backdrop-blur-md justify-between">
 
         {/* LEFT SECTION */}
