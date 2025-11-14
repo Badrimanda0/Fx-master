@@ -200,7 +200,7 @@ export default function HeroSection() {
     : "$0 - Transfer free!";
 
   return (
-    <section className="w-full py-12 flex justify-center font-bricolage relative bg-[rgba(190,219,255,0.18)]">
+    <section className="w-full py-12 flex justify-center font-bricolage relative bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa]">
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1252px] px-4 sm:px-6 gap-10 sm:gap-12">
         {/* LEFT SIDE */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left w-full md:w-1/2">
