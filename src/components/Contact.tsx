@@ -2,7 +2,7 @@
 
 export default function ContactSection() {
   return (
-    <section className="w-full bg-[rgba(190,219,255,0.18)] flex justify-center px-4 py-14">
+    <section className="w-full bg-gradient-to-b from-[#f9fbff] to-[#f3f6fa] flex justify-center px-4 py-14">
       <div
         className="
           w-full
