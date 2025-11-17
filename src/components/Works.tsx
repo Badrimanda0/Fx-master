@@ -116,8 +116,7 @@ export default function HowFXMasterWorks() {
 
       {/* DESKTOP/LAPTOP LEFT BOTTOM FLOATING ICON (md and up) */}
       <div
-        // hidden on small screens, visible on md+
-        className="hidden md:flex absolute left-35 bottom-[19px] flex justify-center items-center"
+        className="hidden md:flex absolute left-[322px] bottom-[20px] flex justify-center items-center"
         style={{
           width: "108.424px",
           height: "105.61px",
@@ -142,10 +141,8 @@ export default function HowFXMasterWorks() {
 
       {/* MOBILE-ONLY FLOATING ICON (visible only on small screens) */}
       <div
-        // visible on small screens, hidden on md+
-        className="flex md:hidden absolute left-[-7px] bottom-220 justify-center items-center z-40"
+        className="flex md:hidden absolute left-[-7px] bottom-[880px] justify-center items-center z-40"
         style={{
-          // scale down size for mobile so it doesn't overlap too much
           width: "88px",
           height: "84px",
           transform: "rotate(1.903deg)",
