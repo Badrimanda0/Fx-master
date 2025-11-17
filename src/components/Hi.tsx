@@ -1,143 +1,135 @@
 "use client";
 
-import { Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaInstagram, FaFacebookF, FaYoutube, FaXTwitter } from "react-icons/fa6";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
+import { SiX } from "react-icons/si";
 
 export default function Footer() {
   return (
-    <footer className="w-full text-white bg-gradient-to-t from-[#0F172B] to-[#1D293D] pt-14 pb-12 px-6 mt-0">
-      <div className="max-w-7xl mx-auto">
-
-        {/* Top Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10">
-
-          {/* Brand + Description */}
-          <div className="space-y-4 col-span-2">
-            <div className="flex items-center gap-3">
-              <div className="relative w-8 h-8">
-                <Image
-                  src="/images/logo.png"
-                  alt="FX Master"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <span className="text-xl font-semibold">FXMaster</span>
-            </div>
-
-            <p className="text-sm text-gray-300 leading-relaxed">
-              The UK's fastest payroll payment solution. Streamline international
-              payroll with compliance, transparency, and dedicated support.
-            </p>
-
-            {/* Social Icons */}
-            <div className="flex gap-4 pt-3">
-
-              {/* X (Twitter) */}
-              <Link
-                href="https://x.com/FX_Master_UK"
-                target="_blank"
-                className="border border-gray-600 p-2 rounded-full hover:border-white transition"
-              >
-                <FaXTwitter size={18} />
-              </Link>
-
-              {/* YouTube */}
-              <Link
-                href="https://www.youtube.com/@FXMaster-uk"
-                target="_blank"
-                className="border border-gray-600 p-2 rounded-full hover:border-white transition"
-              >
-                <FaYoutube size={18} />
-              </Link>
-
-              {/* LinkedIn */}
-              <Link
-                href="https://www.linkedin.com/company/fx-master-payments/"
-                target="_blank"
-                className="border border-gray-600 p-2 rounded-full hover:border-white transition"
-              >
-                <Linkedin size={18} />
-              </Link>
-
-              {/* Instagram */}
-              <Link
-                href="https://www.instagram.com/fxmasterpayments/"
-                target="_blank"
-                className="border border-gray-600 p-2 rounded-full hover:border-white transition"
-              >
-                <FaInstagram size={18} />
-              </Link>
-
-              {/* Facebook */}
-              <Link
-                href="https://www.facebook.com/fxmasterpayments"
-                target="_blank"
-                className="border border-gray-600 p-2 rounded-full hover:border-white transition"
-              >
-                <FaFacebookF size={18} />
-              </Link>
-
-            </div>
-          </div>
-
-          {/* Product */}
-          <div>
-            <h4 className="font-semibold mb-3 text-sm">Product</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
-              <li><Link href="#">Features</Link></li>
-              <li><Link href="#">How It Works</Link></li>
-              <li><Link href="#">Pricing</Link></li>
-              <li><Link href="#">API Documentation</Link></li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold mb-3 text-sm">Company</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
-              <li><Link href="#">About Us</Link></li>
-              <li><Link href="#">Careers</Link></li>
-              <li><Link href="#">Blog</Link></li>
-              <li><Link href="#">Press Kit</Link></li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="font-semibold mb-3 text-sm">Resources</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
-              <li><Link href="#">Help Center</Link></li>
-              <li><Link href="#">Compliance Guide</Link></li>
-              <li><Link href="#">Webinars</Link></li>
-              <li><Link href="#">Case Studies</Link></li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="font-semibold mb-3 text-sm">Legal</h4>
-            <ul className="space-y-2 text-sm text-gray-300">
-              <li><Link href="#">Privacy Policy</Link></li>
-              <li><Link href="#">Terms of Service</Link></li>
-              <li><Link href="#">Security</Link></li>
-              <li><Link href="#">GDPR</Link></li>
-            </ul>
-          </div>
+    <footer
+      className="bg-gradient-to-b from-[#071226] to-[#09111a] text-gray-300"
+      style={{
+        fontFamily: 'var(--font-family-Font-1, "Bricolage Grotesque")',
+      }}
+    >
+      {/* ===== Top Area ===== */}
+      <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col items-center gap-6">
+        {/* ===== FX Master Logo ===== */}
+        <div className="flex items-center w-[170px] h-[30px]">
+          <Image
+            src="/images/white.png"
+            alt="FX Master Logo"
+            width={170}
+            height={30}
+            className="object-contain"
+            priority
+          />
         </div>
 
-        {/* Bottom Line */}
-        <div className="border-t border-gray-700 mt-10 pt-5 flex flex-col sm:flex-row justify-between text-xs text-gray-400">
-          <p>© 2024 FX Master Payroll. All rights reserved. Regulated by the FCA.</p>
-          <div className="flex gap-3 pt-2 sm:pt-0">
+        {/* ===== Description ===== */}
+        <p
+          className="text-sm text-gray-400 leading-relaxed text-center max-w-md"
+          style={{
+            fontFamily: 'var(--font-family-Font-1, "Bricolage Grotesque")',
+            fontSize: "16px",
+            fontWeight: 400,
+            lineHeight: "28px",
+            color: "#B0B8C5",
+          }}
+        >
+          The UK’s fastest payroll payments solution. Streamline international
+          payroll with compliance, transparency, and dedicated support.
+        </p>
+
+        {/* ===== Social Icons ===== */}
+        <div className="flex flex-wrap justify-center gap-3 mt-4">
+          <Link
+            href="https://www.instagram.com/fxmasterpayments/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="w-9 h-9 flex items-center justify-center bg-white/8 rounded-md hover:bg-white/16 transition"
+          >
+            <FaInstagram size={14} />
+          </Link>
+          <Link
+            href="https://www.facebook.com/fxmasterpayments"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            className="w-9 h-9 flex items-center justify-center bg-white/8 rounded-md hover:bg-white/16 transition"
+          >
+            <FaFacebookF size={14} />
+          </Link>
+          <Link
+            href="https://www.youtube.com/@FXMaster-uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            className="w-9 h-9 flex items-center justify-center bg-white/8 rounded-md hover:bg-white/16 transition"
+          >
+            <FaYoutube size={14} />
+          </Link>
+          <Link
+            href="https://x.com/FX_Master_UK"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X"
+            className="w-9 h-9 flex items-center justify-center bg-white/8 rounded-md hover:bg-white/16 transition"
+          >
+            <SiX size={14} />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/company/fx-master-payments/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="w-9 h-9 flex items-center justify-center bg-white/8 rounded-md hover:bg-white/16 transition"
+          >
+            <FaLinkedinIn size={14} />
+          </Link>
+        </div>
+      </div>
+
+      {/* ===== Divider + Bottom Bar ===== */}
+      <div className="border-t border-gray-700">
+        <div
+          className="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-center sm:justify-between text-gray-400 text-xs gap-2 sm:gap-0"
+          style={{
+            fontFamily: 'var(--font-family-Font-1, "Bricolage Grotesque")',
+          }}
+        >
+          <p
+            className="text-sm text-gray-400 text-center sm:text-left"
+            style={{
+              fontSize: "15px",
+              fontWeight: 400,
+              color: "#B0B8C5",
+            }}
+          >
+            © 2024 FX Master Payroll. All rights reserved. Regulated by the
+            FCA.
+          </p>
+
+          <div
+            className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3 text-sm text-gray-400 whitespace-nowrap text-center sm:text-left"
+            style={{
+              fontSize: "15px",
+              fontWeight: 400,
+              color: "#B0B8C5",
+            }}
+          >
             <span>Made in the UK</span>
-            <span>•</span>
+            <span className="hidden sm:inline">•</span>
             <span>ISO 27001 Certified</span>
           </div>
         </div>
-
       </div>
     </footer>
   );
