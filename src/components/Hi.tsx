@@ -43,7 +43,7 @@ export default function Footer() {
             color: "#B0B8C5",
           }}
         >
-          The UK’s fastest payroll payment solution. Streamline international
+          The UK’s fastest payroll payments solution. Streamline international
           payroll with compliance, transparency, and dedicated support.
         </p>
 
