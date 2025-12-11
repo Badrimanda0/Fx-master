@@ -24,10 +24,10 @@ export default function HowFXMasterWorks() {
         </div>
 
         {/* MAIN CONTENT */}
-        <div className="relative flex flex-col lg:flex-row justify-between items-center gap-12">
+        <div className="relative flex flex-col lg:flex-row justify-between items-center gap-20">
           {/* LEFT IMAGE AREA */}
           <div className="relative flex justify-center items-center w-full lg:w-[580px]">
-            <div className="relative w-full h-[480px] sm:h-[570px] lg:h-[590px] rounded-[16px] overflow-hidden shadow-xl">
+            <div className="relative w-[580px] h-[480px] sm:h-[570px] lg:h-[590px] rounded-[16px] overflow-hidden shadow-xl">
               <Image
                 src="/images/wt.png"
                 alt="How FX Works"
@@ -114,9 +114,9 @@ export default function HowFXMasterWorks() {
         </div>
       </div>
 
-      {/* DESKTOP/LAPTOP LEFT BOTTOM FLOATING ICON (md and up) */}
+      {/* DESKTOP ICON (unchanged) */}
       <div
-        className="hidden md:flex absolute left-[322px] bottom-[20px] flex justify-center items-center"
+        className="hidden md:flex absolute left-[322px] bottom-[35px] justify-center items-center"
         style={{
           width: "108.424px",
           height: "105.61px",
@@ -127,21 +127,32 @@ export default function HowFXMasterWorks() {
           background: "rgba(255, 255, 255, 0.5)",
           boxShadow:
             "0 32.677px 40.846px -8.169px rgba(0, 0, 0, 0.10), 0 13.071px 16.339px -9.803px rgba(0, 0, 0, 0.10)",
-          flexShrink: 0,
         }}
       >
-        <Image
-          src="/images/hi.png"
-          alt="Floating Icon"
-          className="w-full h-full object-contain"
-          width={88}
-          height={88}
-        />
+        <Image src="/images/hi.png" width={88} height={88} alt="Floating Icon" />
       </div>
 
-      {/* MOBILE-ONLY FLOATING ICON (visible only on small screens) */}
+      {/* TABLET ICON (NEW + FIX FOR ALL DEVICES) */}
       <div
-        className="flex md:hidden absolute left-[-7px] bottom-[880px] justify-center items-center z-40"
+        className="hidden sm:flex md:hidden absolute left-[160px] bottom-[380px] justify-center items-center z-40"
+        style={{
+          width: "90px",
+          height: "88px",
+          transform: "rotate(1.903deg)",
+          padding: "10px",
+          borderRadius: "56px",
+          border: "1.2px solid #fff",
+          background: "rgba(255, 255, 255, 0.6)",
+          boxShadow:
+            "0 20px 26px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10)",
+        }}
+      >
+        <Image src="/images/hi.png" width={72} height={72} alt="Tablet Floating Icon" />
+      </div>
+
+      {/* MOBILE ICON (unchanged) */}
+      <div
+        className="flex md:hidden absolute left-[-9px] bottom-[910px] justify-center items-center z-40"
         style={{
           width: "88px",
           height: "84px",
@@ -152,16 +163,9 @@ export default function HowFXMasterWorks() {
           background: "rgba(255, 255, 255, 0.6)",
           boxShadow:
             "0 20px 26px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10)",
-          flexShrink: 0,
         }}
       >
-        <Image
-          src="/images/hi.png"
-          alt="Floating Icon Mobile"
-          className="w-full h-full object-contain"
-          width={72}
-          height={72}
-        />
+        <Image src="/images/hi.png" width={72} height={72} alt="Floating Icon Mobile" />
       </div>
     </section>
   );

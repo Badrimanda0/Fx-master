@@ -77,7 +77,7 @@ export default function FAQSection() {
           {faqs.map((faq, index) => (
             <div
               key={faq.id}
-              className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden transition-all duration-300"
+              className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden tran      sition-all duration-300"
             >
               <dt>
                 <button
@@ -97,7 +97,7 @@ export default function FAQSection() {
                       {faq.id}
                     </span>
 
-                    {/* QUESTION TEXT */}
+
                     <span
                       className="text-[16px] sm:text-[17px] font-semibold"
                       style={{
