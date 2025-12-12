@@ -37,7 +37,7 @@ export default function HeroSection() {
         const res = await fetch(
           "https://fxmaster-prod-apim.azure-api.net/fxmaster-api-prod-clone/API-FX-100-App",
           {
-            headers: { fx_key: "d9ca05910ac147cd99d2578c2bd62f5c" },
+            headers: { fx_key: "d9ca05910ac147cd99d2578c2bd62fc      " },
           }
         );
         const json = await res.json();
